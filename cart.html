@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart Summary</title>
+    <link rel="stylesheet" href="cart.css">
+
+
+</head>
+<body>
+
+
+    <div class="nav">
+        <div class="navbar1">
+           
+            <div class="logo"> <img src="logo.png" alt="Logo" class="logo"></div>
+            <div class="menu-toggle" id="toggleMenu">&#9776;</div>
+        </div>
+        <div class="sidebar" id="sidebar">
+            <span class="close-btn" id="closeBtn">&times;</span> <!-- Close button in the sidebar -->
+            <ul class="menu">
+                <li><a style="text-decoration: none; color: white;" href="dashboard.html">Dashboard</li></a>
+                <li><a style="text-decoration: none; color: white;" href="Hot offer.html">Hot Offer <span class="plus-icon">+</span></li></a>
+                <li><a style="text-decoration: none; color: white;" href="lottery.html">Lotteries <span class="plus-icon">+</span></li></a>
+                <li><a style="text-decoration: none; color: white;" href="Deposite.html">Deposit <span class="plus-icon">+</span></li></a>
+                <li><a style="text-decoration: none; color: white;" href="withdrawal.css">Withdraw <span class="plus-icon">+</span></a></li></a>
+                <li><a style="text-decoration: none; color: white;" href="payment.html">Payment Proof <span class="plus-icon">+</span></li></a>
+               </ul>
+            <div class="footer">
+                <button class="logout-btn"><a style="text-decoration: none; color: white;" href="login.html">Logout</a></button>
+            </div>
+        </div>
+        <script>
+            const toggleMenu = document.getElementById('toggleMenu');
+            const sidebar = document.getElementById('sidebar');
+            const closeBtn = document.getElementById('closeBtn');
+    
+            // Open the sidebar when the menu toggle is clicked
+            toggleMenu.addEventListener('click', () => {
+                sidebar.classList.add('active');
+            });
+    
+            // Close the sidebar when the close button is clicked
+            closeBtn.addEventListener('click', () => {
+                sidebar.classList.remove('active');
+            });
+        </script>
+    </div>
+
+
+
+
+    <div class="nav2">
+<div class="navbar">
+        <!-- Logo section -->
+        <div class="logo-container">
+            <img src="logo.png" alt="Logo" class="logo"> <!-- Replace with your logo URL -->
+            <span class="logo-text"></span>
+        </div>
+        <!-- Navbar links -->
+        <ul class="nav-links">
+            <li><a style="text-decoration: none; color: white;" href="dashboard.html">Dashboard</li></a>
+            <li><a style="text-decoration: none; color: white;" href="Hot offer.html">Hot Offer <span class="plus-icon">+</span></li></a>
+            <li><a style="text-decoration: none; color: white;" href="lottery.html">Lotteries <span class="plus-icon">+</span></li></a>
+            <li><a style="text-decoration: none; color: white;" href="Deposite.html">Deposit <span class="plus-icon">+</span></li></a>
+            <li><a style="text-decoration: none; color: white;" href="withdrawal.css">Withdraw <span class="plus-icon">+</span></a></li></a>
+            <li><a style="text-decoration: none; color: white;" href="payment.html">Payment Proof <span class="plus-icon">+</span></li></a>
+           </ul>
+        <!-- Logout button -->
+        <button class="logout-btn"><a style="text-decoration: none; color: white;" href="login.html">Logout</a></button>
+    </div>
+</div>
+    <div class="container">
+        <div class="details-section">
+            <h2>Here You Can Pay Us</h2>
+            <p>
+                Thank you for choosing our Plateform! We strive to make your payment process smooth, secure, and hassle-free. 
+                Here, you can review your order details and finalize your payment securely. Whether you’re paying for your luck,
+                 you also know that min 5 dollar is nothing for everyone so try your luck with us (verified by governments and trustful Certificates) that we prioritize your privacy and security throughout the transaction process.
+            </p>
+            <div class="lines">
+                <p>1: You get your Lucky number previously</p>
+                <p>2: You can deposit first 5$ - 100$ by clicking on pay now button.</p>
+                <p>3:Get a chance to win 1000$ in just 24Hours</p>
+            </div>
+        </div>
+        <div class="cart-heading">Cart</div>
+        <div class="row-line"></div>
+        <div class="header">
+            <h1>Cart Summary</h1>
+        </div>
+        <!-- Selected numbers row -->
+        <div class="row">
+            <div class="numbers" id="selected-numbers">
+                <!-- Numbers will be populated dynamically -->
+            </div>
+           
+        </div>
+        <div class="divider"></div>
+        <!-- Footer section -->
+        <div class="footer">
+            <div class="redeem">Have a redeem code?</div>
+            <div class="total" id="total-payable">Total Payable amount: Dollar $5</div>
+        </div>
+        <!-- Pay Now Button Container -->
+        <div class="pay-btn-container">
+            <button class="pay-btn" id="pay-btn">Pay Now</button>
+        </div>
+    </div>
+
+    <script>
+        // Dynamically add selected numbers from localStorage
+        const selectedNumbers = JSON.parse(localStorage.getItem('selectedNumbers')) || [];
+        const numbersContainer = document.getElementById('selected-numbers');
+
+        selectedNumbers.forEach(num => {
+            const numberElement = document.createElement('div');
+            numberElement.classList.add('number');
+            numberElement.textContent = num;
+            numbersContainer.appendChild(numberElement);
+        });
+
+        // Total payable amount calculation
+        const totalAmount = selectedNumbers.length * 8;
+        const totalElement = document.querySelector('.total');
+        totalElement.textContent = `Total Paid amount: Dollar ${totalAmount}`;
+
+        // Adjust "Pay Now" button width to match the "Total Payable" text
+        const payBtn = document.getElementById('pay-btn');
+        const totalPayable = document.getElementById('total-payable');
+        const totalWidth = totalPayable.offsetWidth; // Get the width of the "Total Payable" text
+        payBtn.style.width = `${totalWidth}px`; // Set the button's width to match
+    </script>
+</body>
+</html>

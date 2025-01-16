@@ -1,0 +1,219 @@
+.formal{
+    margin-top: 2%;
+    justify-content: center;
+    justify-items: center;
+}
+
+
+@media (min-width: 851px) {
+ 
+    body {
+font-family: 'Poppins', Arial, sans-serif;
+ background-color: #10122d;
+color: #fff;
+  line-height: 1.6;
+ overflow-x: hidden;
+}
+/* Navbar container */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #1A1A3E;
+    padding: 10px 20px;
+    height: 60px;
+}
+
+/* Logo section */
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    height: 40px;
+    margin-right: 10px;
+}
+
+.logo-text {
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+}
+
+/* Navbar links */
+.nav-links {
+    display: flex;
+    align-items: center;
+}
+
+.nav-links li {
+    list-style: none;
+    margin: 0 15px;
+    color: #fff;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.nav-links li .plus-icon {
+    color: #00BFFF;
+    margin-left: 5px;
+}
+
+.nav-links li:hover {
+    color: #00BFFF;
+}
+
+/* Logout button */
+.logout-btn {
+    background-color: #FF6347;
+    color: #fff;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.logout-btn:hover {
+    background-color: #e5533d;
+}
+
+.nav{
+display: none;
+}
+}
+
+
+
+
+@media (max-width: 851px){
+/* Navbar styles */
+/*toggle nav bar */
+/*toggle nav bar */
+/*toggle nav bar */
+/*toggle nav bar */
+/*toggle nav bar */
+/*toggle nav bar */
+/*toggle nav bar */
+
+ 
+body {
+font-family: 'Poppins', Arial, sans-serif;
+ background-color: #10122d;
+color: #fff;
+  line-height: 1.6;
+ overflow-x: hidden;
+}
+.navbar1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #2B2B50;
+    padding: 10px 20px;
+}
+
+.logo {
+    display: flex;
+    font-size: 25px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.logo  {
+    height: 40px;
+    margin-right: 10px;
+}
+
+.menu-toggle {
+font-size:30px;
+cursor: pointer;
+color: #fff;
+}
+
+
+/* Sidebar styles */
+.sidebar {
+    width: 240px;
+    background-color: #1A1A3E;
+    height: 100vh;
+    padding: 20px;
+    position: fixed;
+    left: -280px; /* Fully hidden off-screen */
+    top: 0;
+    transition: left 0.3s ease; /* Smooth slide-in effect */
+}
+
+.sidebar.active {
+    left: 0; /* Slide into view */
+}
+
+.menu {
+    list-style: none;
+    padding: 0;
+}
+
+.menu li {
+    padding: 10px 0;
+    font-size: 16px;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    border-bottom: 1px solid #333;
+}
+
+.menu li span {
+    color: #00BFFF;
+}
+
+.footer {
+    margin-top: 20px;
+}
+
+.logout {
+    background-color: #FF6347;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.language-select {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.language-select img {
+    width: 20px;
+    margin-right: 5px;
+}
+
+.language-select span {
+    margin-left: 5px;
+}
+
+/* Add hover effect */
+.menu li:hover {
+    background-color: #333;
+    color: #fff;
+}
+
+/* Close button inside sidebar */
+.close-btn {
+    font-size: 24px;
+    color: #fff;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+.nav2{
+    display: none;
+}
+}

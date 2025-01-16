@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Withdraw Money</title>
+    <link rel="stylesheet" href="loader.css">
+    <link rel="stylesheet" href="withdrawal.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0e173a;
+            color: #ffffff;
+            justify-content: center;
+            align-items: center;
+            height: auto;
+        }
+
+        .withdraw-container {
+            background-color: #1c2541;
+            border-radius: 15px;
+            padding: 40px;
+            width: 100%;
+            max-width: 450px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+
+        .withdraw-container h1 {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 25px;
+        }
+
+        .options {
+            display: flex;
+            flex-wrap: wrap; /* Allow options to wrap */
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+
+        .option {
+            cursor: pointer;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: #273469;
+            border: 2px solid transparent;
+            text-align: center;
+            transition: all 0.3s ease;
+            width: 45%; /* Default width for smaller screens */
+            margin-bottom: 10px;
+        }
+
+        .option.active {
+            border-color: #00d4ff;
+            background-color: #304a84;
+        }
+
+        .option:hover {
+            background-color: #304a84;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+            color: #a8b5d1;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #3c4f76;
+            background-color: #2b3a67;
+            color: #ffffff;
+            font-size: 1rem;
+        }
+
+        .info {
+            margin-bottom: 30px;
+            text-align: left;
+            font-size: 0.9rem;
+            color: #a8b5d1;
+        }
+
+        .info span {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .btn {
+            background-color: #00d4ff;
+            border: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            color: #000000;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #00b8e6;
+        }
+
+        .note {
+            margin-top: 20px;
+            font-size: 0.85rem;
+            color: #7889a6;
+        }
+
+        /* For screens between 600px and 1000px, use 2 rows and 2 columns */
+        @media (min-width: 500px)  {
+            .options {
+                display: grid;
+                grid-template-columns: 1fr 1fr; /* Two columns */
+                grid-gap: 50px; /* Space between the options */
+                justify-items: center; /* Center the options */
+            }
+
+            .option {
+                width: 100%; /* Ensures each option takes up full width in a column */
+                margin-bottom: 0; /* Remove margin-bottom since the grid handles spacing */
+            }
+        }
+
+       
+
+        /* For small screens, make the options stack */
+        @media (max-width: 500px) {
+            .option {
+                width: 100%; /* Stack the options vertically */
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+
+<div id="preloader">
+    <img src="preloader.gif" alt="Loading...">
+</div>
+<script>
+     // Set a delay of 0.5 to 1 second (randomly chosen within this range)
+window.onload = function() {
+    var delayTime = Math.random() * (1000 - 500) + 500; // Random delay between 500ms and 1000ms
+    
+    // Set a timeout to hide the preloader after the delay
+    setTimeout(function() {
+        // Hide preloader
+        document.getElementById('preloader').style.display = 'none';
+
+        // Show main content
+        document.getElementById('main-content').style.display = 'block';
+    }, delayTime);
+};
+
+</script>
+  
+    <div class="nav">
+        <div class="navbar1">
+           
+            <div class="logo"> <img src="logo.png" alt="Logo" class="logo"></div>
+            <div class="menu-toggle" id="toggleMenu">&#9776;</div>
+        </div>
+        <div class="sidebar" id="sidebar">
+            <span class="close-btn" id="closeBtn">&times;</span> <!-- Close button in the sidebar -->
+            <ul class="menu">
+                <li><a style="text-decoration: none; color: white;" href="dashboard.html">Dashboard</li></a>
+                <li><a style="text-decoration: none; color: white;" href="lottery.html">Lotteries <span class="plus-icon">+</span></li></a>
+                <li><a style="text-decoration: none; color: white;" href="Deposite.html">Deposit <span class="plus-icon">+</span></li></a>
+                <li><a style="text-decoration: none; color: white;" href="withdrawal.html">Withdraw <span class="plus-icon">+</span></a></li></a>
+                <li><a style="text-decoration: none; color: white;" href="payment.html">Payment Proof <span class="plus-icon">+</span></li></a>
+                </ul>
+            <div class="footer">
+                <a style="text-decoration: none; color: white;" href="login.html"><button class="logout-btn">Logout</button></a>
+            </div>
+        </div>
+        <script>
+            const toggleMenu = document.getElementById('toggleMenu');
+            const sidebar = document.getElementById('sidebar');
+            const closeBtn = document.getElementById('closeBtn');
+    
+            // Open the sidebar when the menu toggle is clicked
+            toggleMenu.addEventListener('click', () => {
+                sidebar.classList.add('active');
+            });
+    
+            // Close the sidebar when the close button is clicked
+            closeBtn.addEventListener('click', () => {
+                sidebar.classList.remove('active');
+            });
+        </script>
+    </div>
+    
+    <div class="nav2">
+    <div class="navbar">
+        <!-- Logo section -->
+        <div class="logo-container">
+            <img src="logo.png" alt="Logo" class="logo"> <!-- Replace with your logo URL -->
+            <span class="logo-text"></span>
+        </div>
+        <!-- Navbar links -->
+        <ul class="nav-links">
+            <li><a style="text-decoration: none; color: white;" href="dashboard.html">Dashboard</li></a>
+                <li><a style="text-decoration: none; color: white;" href="lottery.html">Lotteries <span class="plus-icon">+</span></li></a>
+                <li><a style="text-decoration: none; color: white;" href="Deposite.html">Deposit <span class="plus-icon">+</span></li></a>
+                <li><a style="text-decoration: none; color: white;" href="withdrawal.html">Withdraw <span class="plus-icon">+</span></a></li></a>
+                <li><a style="text-decoration: none; color: white;" href="payment.html">Payment Proof <span class="plus-icon">+</span></li></a>
+                </ul>
+        <!-- Logout button -->
+        <a style="text-decoration: none; color: white;" href="login.html"><button class="logout-btn">Logout</button></a>
+            </div>
+    </div>
+<div class="formal"> <h1>Withdraw Money</h1>
+    <div class="withdraw-container">
+       
+        <h2>Choose Payment Option </h2>
+        <div class="options">
+            <div class="option active" id="bitcoin">
+                <p>Bank Account</p>
+            </div>
+            <div class="option" id="ethereum">
+                <p>Perfect Money </p>
+            </div>
+            <div class="option" id="binance">
+                <p>Payoneer</p>
+            </div>
+            <div class="option" id="dogecoin">
+                <p>PayPal</p>
+            </div><div class="option active" id="bitcoin">
+                <p>Bitcoin (BTC)</p>
+            </div>
+            <div class="option" id="ethereum">
+                <p>Ethereum (ETH)</p>
+            </div>
+            <div class="option" id="binance">
+                <p>Binance Coin (BNB)</p>
+            </div>
+            <div class="option" id="dogecoin">
+                <p>Doge (D)</p>
+            </div>
+        </div>
+        <h2>Choose Withdrawal Amount </h2>
+        <div class="input-group">
+            <label for="amount">Amount</label>
+            <input type="number" id="amount" placeholder="$" value="100">
+        </div>
+
+        <div class="info">
+            <span><strong>Limit:</strong> $10.00 - $1,000.00</span>
+            <span><strong>Processing Charge:</strong> $<span id="processing-charge">3.00</span> USD (3%)</span>
+            <span><strong>Receivable:</strong> $<span id="receivable-amount">97.00</span> USD</span>
+        </div>
+        <button class="btn" id="confirmWithdraw">Confirm Withdraw</button>
+
+        <p class="note">Safely withdraw your funds using our highly secure process and various withdrawal methods.</p>
+    </div>
+</div>
+<script>
+    // Function to update the charges and receivable amount based on input
+    function updateAmounts() {
+        const amount = parseFloat(document.getElementById('amount').value);
+        if (isNaN(amount) || amount <= 0) {
+            return; // Skip if the input is invalid
+        }
+        const processingCharge = amount * 0.03; // 3% processing charge
+        const receivableAmount = amount - processingCharge; // Subtract the processing charge
+
+        // Update the UI
+        document.getElementById('processing-charge').innerText = processingCharge.toFixed(2);
+        document.getElementById('receivable-amount').innerText = receivableAmount.toFixed(2);
+    }
+
+    // Event listener for when the user changes the amount
+    document.getElementById('amount').addEventListener('input', updateAmounts);
+
+    // Initial amount update
+    updateAmounts();
+
+    document.querySelectorAll('.option').forEach(option => {
+        option.addEventListener('click', function() {
+            document.querySelectorAll('.option').forEach(opt => opt.classList.remove('active'));
+            this.classList.add('active');
+        });
+    });
+
+    document.getElementById('confirmWithdraw').addEventListener('click', function() {
+        // Check which option is active
+        let selectedOption = document.querySelector('.option.active').id;
+
+        // Redirect based on the selected option
+        switch(selectedOption) {
+            case 'bitcoin':
+                window.location.href = 'btc.html';
+                break;
+            case 'ethereum':
+                window.location.href = 'eth.html';
+                break;
+            case 'binance':
+                window.location.href = 'bnb.html';
+                break;
+            case 'dogecoin':
+                window.location.href = 'doge.html';
+                break;
+            default:
+                alert("Please select a withdrawal method.");
+                break;
+        }
+    });
+</script>
+</body>
+</html>

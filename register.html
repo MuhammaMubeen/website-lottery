@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fake Payment Proofs</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background-color: #0a0d29;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+
+    header {
+      background-color: #333;
+      color: white;
+      padding: 10px 0;
+      text-align: center;
+    }
+
+    .top-nav {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      background-color: #444;
+      padding: 10px 0;
+    }
+
+    .top-nav a {
+      color: white;
+      text-decoration: none;
+      padding: 8px 16px;
+      font-size: 18px;
+    }
+
+    .top-nav a:hover {
+      background-color: #555;
+      border-radius: 4px;
+    }
+
+    .container {
+      margin: 20px;
+      text-align: center;
+    }
+
+    .heading {
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: #00d9ff;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+
+    table, th, td {
+      border: 1px solid #ddd;
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: center;
+      font-size: 16px;
+    }
+
+    th {
+      background-color: #272d64;
+    }
+
+    tr:nth-child(even) {
+      background-color: #1f265d;
+    }
+
+    tr:nth-child(odd) {
+      background-color: #272d64;
+    }
+
+    .show-more {
+      padding: 10px 20px;
+      background-color: #00d9ff;
+      color: white;
+      cursor: pointer;
+      border: none;
+      font-size: 18px;
+      border-radius: 5px;
+    }
+
+    .show-more:hover {
+      background-color: #00b0e4;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #0b3b60;
+      color: white;
+      font-size: 14px;
+    }
+
+    /* Preloader Styles */
+    #preloader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #1a1e40;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    #preloader img {
+      width: 100px;
+      height: 100px;
+    }
+
+    .testimonial-section {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 50px 20px;
+      background-color: #0a0d29;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .testimonial {
+      background-color: #272d64;
+      border-radius: 8px;
+      padding: 20px;
+      max-width: 400px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .testimonial p {
+      font-style: italic;
+      margin: 0;
+    }
+
+    .testimonial span {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+      text-align: right;
+    }
+
+    @media (max-width: 500px) {
+      .testimonial-section {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .testimonial {
+        width: 100%;
+        margin: 0 auto;
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Fake Payment Proofs</h1>
+</header>
+
+<div class="top-nav">
+  <a href="#">Home</a>
+  <a href="#">About</a>
+  <a href="#">Contact</a>
+</div>
+
+<div class="container">
+  <div class="heading">Latest Payment Proofs</div>
+  <table id="payment-table">
+    <thead>
+      <tr>
+        <th>Email</th>
+        <th>Deposit ($)</th>
+        <th>Withdrawal ($)</th>
+        <th>Profit ($)</th>
+      </tr>
+    </thead>
+    <tbody id="payment-tbody">
+      <!-- Rows will be added dynamically here -->
+    </tbody>
+  </table>
+
+  <button class="show-more" onclick="loadMore()">Show More</button>
+</div>
+
+<footer>
+  &copy; 2025 Fake Payment Proofs. All rights reserved.
+</footer>
+
+<script>
+  const generateRandomData = () => {
+    const names = ["david", "alice", "john", "michael", "susan"];
+    const randomName = names[Math.floor(Math.random() * names.length)];
+    const randomStars = Math.floor(Math.random() * (5 - 3 + 1)) + 3; // Generates between 3 to 5 stars
+    const randomEmail = `${randomName}${'*'.repeat(randomStars)}@gmail.com`;
+    const randomDeposit = (Math.random() * (300 - 30) + 30).toFixed(2);
+    const randomWithdrawal = (Math.random() * (1000 - 100) + 100).toFixed(2);
+    const randomProfit = (Math.random() * (randomDeposit - 50) + 10).toFixed(2);
+
+    return {
+      email: randomEmail,
+      deposit: randomDeposit,
+      withdrawal: randomWithdrawal,
+      profit: randomProfit
+    };
+  };
+
+  const addRows = (numRows) => {
+    const tbody = document.getElementById('payment-tbody');
+    for (let i = 0; i < numRows; i++) {
+      const row = document.createElement('tr');
+      const data = generateRandomData();
+      
+      row.innerHTML = `
+        <td>${data.email}</td>
+        <td>$${data.deposit}</td>
+        <td>$${data.withdrawal}</td>
+        <td>$${data.profit}</td>
+      `;
+      tbody.appendChild(row);
+    }
+  };
+
+  addRows(20);
+
+  const loadMore = () => {
+    addRows(20);
+  };
+</script>
+
+</body>
+</html>
+
+    <div class="nav">
+        <div class="navbar1">
+           
+            <div class="logo"> <img src="logo.png" alt="Logo" class="logo"></div>
+            <div class="menu-toggle" id="toggleMenu">&#9776;</div>
+        </div>
+        <div class="sidebar" id="sidebar">
+            <span class="close-btn" id="closeBtn">&times;</span> <!-- Close button in the sidebar -->
+            <ul class="menu">
+                <li>Dashboard <span>
+                <li>Lotteries <span>+</span></li>
+                <li>Deposit <span>+</span></li>
+                <li>Withdraw <span>+</span></li>
+                <li>Proof <span>+</span></li>
+                
+            </ul>
+            <div class="footer">
+                <button class="logout">ADD Money</button>
+                
+            </div>
+        </div>
+        <script>
+            const toggleMenu = document.getElementById('toggleMenu');
+            const sidebar = document.getElementById('sidebar');
+            const closeBtn = document.getElementById('closeBtn');
+    
+            // Open the sidebar when the menu toggle is clicked
+            toggleMenu.addEventListener('click', () => {
+                sidebar.classList.add('active');
+            });
+    
+            // Close the sidebar when the close button is clicked
+            closeBtn.addEventListener('click', () => {
+                sidebar.classList.remove('active');
+            });
+        </script>
+    </div>
+  
+    <div class="nav2">
+  <div class="navbar">
+        <!-- Logo section -->
+        <div class="logo-container">
+            <img src="logo.png" alt="Logo" class="logo"> <!-- Replace with your logo URL -->
+            <span class="logo-text"></span>
+        </div>
+        <!-- Navbar links -->
+        <ul class="nav-links">
+            <li>Dashboard</li>
+            <li>Lotteries <span class="plus-icon"></span></li>
+            <li>Deposit <span class="plus-icon"></span></li>
+            <li>Withdraw <span class="plus-icon"></span></li>
+            <li>Payment Proof <span class="plus-icon"></span></li>
+         </ul>
+        <!-- Logout button -->
+        <button class="logout-btn"><a style="color: white; text-decoration: none;" href="login.html">login</a></button>
+    </div>
+  </div>
+  
+  <div class="formal">
+    <div class="auth-container">
+        <div class="auth-box">
+            <!-- Logo Section -->
+           
+            <h2>Register</h2>
+            <form id="register-form" action="index.html" method="post">
+                <div class="form-group">
+                    <label for="register-username">Username</label>
+                    <input type="text" id="register-username" name="username" placeholder="Enter your username" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-email">Email</label>
+                    <input type="email" id="register-email" name="email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-password">Password</label>
+                    <input type="password" id="register-password" name="password" placeholder="Enter your password" required>
+                    <p>
+                        <input type="checkbox" id="terms-checkbox" required>
+                        By Login account, I agree to <a href="#" class="terms-link">Terms and Conditions</a>
+                    </p>
+                    
+                </div>
+                <button type="submit" class="btn">Register</button>
+            </form>
+            <p>Don't have an account? <a href="login.html">Log In</a></p>
+            <a href="#" class="help-link">Need help?</a>
+        </div>
+    </div>
+</div>
+    <style>
+        body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #0a0d29;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.auth-container {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    background: white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+}
+
+.auth-box h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+    position: relative;
+}
+
+.auth-box h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: #00d9ff;
+    margin: 5px auto;
+}
+
+.logo {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.logo-img {
+    max-width: 120px;
+    height: auto;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+.form-group input {
+    width: 90%;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    font-size: 14px;
+}
+
+.form-group input:focus {
+    border-color: #8a2be2;
+    outline: none;
+}
+
+.btn {
+    margin-left: 15%;
+     width: 70%;
+    padding: 10px;
+    background: #00d9ff;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+p {
+    text-align: center;
+    margin-top: 10px;
+    color: #555;
+}
+
+p input[type="checkbox"] {
+    width: 16px;
+   height: 16px;
+}
+
+a {
+    color: #000000;
+    text-decoration: underline;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+p {
+    text-align: center;
+    font-size: 12px;
+  }
+  
+  a {
+    color:  #000000; 
+       text-decoration: underline;
+  }
+  .button   a {
+    color:  #000000;
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  .forgot-password {
+    display: block;
+    text-align: right;
+    margin-bottom: 15px;
+    font-size: 12px;
+    color: #8a2be2;
+    text-decoration: none;
+  }
+  
+  .forgot-password:hover {
+    text-decoration: underline;
+  }
+
+  .terms-link {
+    font-weight: bold;
+  }
+  
+  .help-link {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    font-size: 12px;
+  }
+/* Responsive Design */
+@media (max-width: 768px) {
+    .auth-container {
+        margin: 0 20px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .logo {
+        width: 60px;
+        margin-bottom: 15px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .logo {
+        width: 50px;
+        margin-bottom: 10px;
+    }
+}
+
+    </style>
+    <script>document.addEventListener("DOMContentLoaded", () => {
+        const loginForm = document.getElementById("login-form");
+        const registerForm = document.getElementById("register-form");
+    
+        // Handle login submission
+        if (loginForm) {
+            loginForm.addEventListener("submit", (e) => {
+                e.preventDefault();
+                alert("Login successful!");
+                window.location.href = "dahboard.html";
+            });
+        }
+    
+        // Handle registration submission
+        if (registerForm) {
+            registerForm.addEventListener("submit", (e) => {
+                e.preventDefault();
+                alert("Registration successful!");
+                window.location.href = "login.html";
+            });
+        }
+    });
+    </script>
+</body>
+</html>

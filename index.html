@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casino Landing Page</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+     <link rel="stylesheet" href="footer.css">
+    <link rel="stylesheet" href="coin.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+             margin: 0;
+             font-family: Arial, sans-serif;
+             background-color: #0a0d29;
+             color: white;
+        }
+       
+        .contact-info {
+            display: flex;
+            gap: 15px;
+        }
+        .signup-button {
+            background-color: #00d9ff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .hero {
+            display: flex;
+            margin-top: 0%;
+            align-items: center;
+            justify-content: space-between;
+            padding: 50px 20px;
+            min-height: 80vh;
+        }
+
+        
+        .hero-content {
+            max-width: 50%;
+        }
+        .hero-content h1 {
+            font-size: 48px;
+            font-weight: bold;
+        }
+        .hero-content h2 {
+            font-size: 25px;
+            color: #00d9ff;
+            margin: 10px 0;
+        }
+        .hero-content p {
+            font-size: 18px;
+            margin: 20px 0;
+        }
+        .hero-content .cta-buttons {
+            display: flex;
+            gap: 20px;
+        }
+        .hero-content button {
+            background-color: #00d9ff;
+            color: #fff;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .hero-image {
+            max-width: 45%;
+        }
+        .hero-image img {
+            
+            margin-top: -10%;
+            width: 100%;
+            border-radius: 10px;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #0b3b60;
+            color: #fff;
+            font-size: 14px;
+        }
+        @media (min-width: 900px) {
+        #up{
+                display: none;
+            }
+        }
+        @media (max-width: 900px) {
+        #up{
+                display: none;
+            }
+
+            .hero-content h1 {
+            font-size: 35px;
+            font-weight: bold;
+        }
+        .hero-content h2 {
+            font-size: 16px;
+            color: #00d9ff;
+            min-width: 100%;
+        }
+        .hero-content p {
+            font-size: 16px;
+            margin: 20px 0;
+        }
+        .hero-content .cta-buttons {
+            display: flex;
+            gap: 20px;
+        }
+        .hero-content button {
+            justify-content: center;
+            justify-items: center;
+            align-items: center;
+            background-color: #00d9ff;
+            color: #fff;
+            padding: 15px 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        }
+        @media (max-width: 768px) {
+            #down{
+                display: none;
+            }
+            #up{
+                display: flex;
+            }
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+            .hero-content {
+                max-width: 100%;
+            }
+            .hero-image {
+                max-width: 100%;
+                margin-top: -70px;
+            }
+            .hero-content h1 {
+            font-size: 30px;
+            font-weight: bold;
+        }
+        .hero-content h2 {
+           
+            font-size: 16px;
+            color:  #00d9ff;
+            min-width: 100%;
+        }
+        .hero-content p {
+            font-size: 16px;
+            margin: 20px 0;
+        }
+        .hero-content .cta-buttons {
+            display: flex;
+            gap: 20px;
+        }
+        .hero-content button {
+            background-color: #00d9ff;
+            color: #fff;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+            font-size: 25px;
+            font-weight: bold;
+        }
+        .hero-content h2 {
+           
+            font-size: 14px;
+            color:  #00d9ff;
+            min-width: 100%;
+        }
+        .hero-content p {
+            font-size: 16px;
+            margin: 20px 0;
+        }
+        .hero-content .cta-buttons {
+            display: flex;
+            gap: 20px;
+        }
+        .hero-content button {
+            background-color: #00d9ff;
+            color: #fff;
+            padding: 15px 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        }
+/* Preloader Styles */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #1a1e40;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+/* Optional: Resize the GIF if needed */
+#preloader img {
+    width: 100px; /* Adjust the size as needed */
+    height: 100px; /* Adjust the size as needed */
+}
+
+/* Main content */
+#main-content {
+    display: none;
+}
+
+
+.testimonial-section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 20px;
+        padding: 50px 20px;
+        background-color: #0a0d29;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    .testimonial {
+        background-color: #272d64;
+        border-radius: 8px;
+        padding: 20px;
+        max-width: 400px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    .testimonial p {
+        font-style: italic;
+        margin: 0;
+    }
+    
+    .testimonial span {
+        display: block;
+        margin-top: 10px;
+        font-weight: bold;
+        text-align: right;
+    }
+
+    @media (max-width: 500px) {
+        
+        
+        .testimonial-section {
+        flex-direction: column;
+        gap: 10px;
+        }
+        
+        .testimonial {
+        width: 100%;
+        margin: 0 auto;
+        padding: 15px;
+        }
+    }
+
+
+
+    </style>
+   <style>
+   
+
+    .stats {
+        display: flex;
+        justify-content: space-around;
+        gap: 20px;
+        padding: 20px;
+        margin: 20px;
+    }
+
+    .stat-box {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        background-color: #1a1a40;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        color: #00eaff;
+        gap: 15px;
+    }
+
+    .stat-box img {
+        width: 60px;
+        height: 60px;
+        object-fit: cover;
+        border-radius: 50%; /* Makes the image circular */
+    }
+
+    .stat-content {
+        text-align: left;
+    }
+
+    .stat-content h3 {
+        font-size: 24px;
+        margin: 10px 0;
+    }
+
+    .stat-content p {
+        font-size: 16px;
+        color: #ccc;
+    }
+
+    footer {
+        text-align: center;
+        padding: 20px;
+        background-color: #0b3b60;
+        color: #fff;
+        font-size: 14px;
+    }
+
+    @media (max-width: 608px) {
+        .stats {
+            justify-content: center;
+            justify-items: center;
+            text-align: center;
+            flex-direction: column;
+        }
+        .stat-box {
+            flex-direction: row;
+        }
+        .stat-content p {
+        font-size: 16px;
+        color: #ccc;
+        flex-direction: row;
+    }
+    }
+</style>
+
+<script>
+ // Set a delay of 0.5 to 1 second (randomly chosen within this range)
+window.onload = function() {
+    var delayTime = Math.random() * (1000 - 500) + 500; // Random delay between 500ms and 1000ms
+    
+    // Set a timeout to hide the preloader after the delay
+    setTimeout(function() {
+        // Hide preloader
+        document.getElementById('preloader').style.display = 'none';
+
+        // Show main content
+        document.getElementById('main-content').style.display = 'block';
+    }, delayTime);
+};
+
+
+</script>
+</head>
+<body>
+    <a href="register.html"><div class="popup" id="popup">
+        <div class="popup-content"></a>
+            <span class="close-btn" id="closeBtn">&times;</span>
+          
+        </div>
+      </div>
+    
+      <script>
+       document.addEventListener("DOMContentLoaded", () => {
+  const popup = document.getElementById("popup");
+  const popupCloseBtn = document.getElementById("closeBtn");
+
+  // Show the popup
+  popup.style.display = "flex";
+
+  // Close the popup when the popup close button is clicked
+  popupCloseBtn.addEventListener("click", () => {
+    popup.style.display = "none";
+  });
+});
+  
+
+      </script>
+ <!-- Preloader -->
+ <div id="preloader">
+    <img src="preloader.gif" alt="Loading...">
+</div>
+
+    <div class="nav">
+        <div class="navbar1">
+           
+            <div class="logo"> <img src="logo.png" alt="Logo" class="logo"></div>
+            <div class="menu-toggle" id="toggleMenu">&#9776;</div>
+        </div>
+        <div class="sidebar" id="sidebar">
+            <span class="close-btn" id="closeBtn">&times;</span> <!-- Close button in the sidebar -->
+            <ul class="menu">
+                <li>Dashboard <span class="plus-icon"></span></li>
+                <li>Hot Offer <span class="plus-icon"></span></li>
+                <li>Lotteries <span class="plus-icon"></span></li>
+                <li>Deposit <span class="plus-icon"></span></li>
+                <li>Withdraw <span class="plus-icon"></span></li>
+                <li>Payment Proof <span class="plus-icon"></span></li>
+             </ul>
+            <div class="footer">
+                <button class="logout-btn"><a style="color: white; text-decoration: none;" href="register.html">Logout</button></a>
+    </div>
+        </div>
+        <script>
+            const toggleMenu = document.getElementById('toggleMenu');
+            const sidebar = document.getElementById('sidebar');
+            const closeBtn = document.getElementById('closeBtn');
+    
+            // Open the sidebar when the menu toggle is clicked
+            toggleMenu.addEventListener('click', () => {
+                sidebar.classList.add('active');
+            });
+    
+            // Close the sidebar when the close button is clicked
+            closeBtn.addEventListener('click', () => {
+                sidebar.classList.remove('active');
+            });
+        </script>
+    </div>
+    
+    <div class="nav2">
+    <div class="navbar">
+        <!-- Logo section -->
+        <div class="logo-container">
+            <img src="logo.png" alt="Logo" class="logo"> <!-- Replace with your logo URL -->
+            <span class="logo-text"></span>
+        </div>
+        <!-- Navbar links -->
+        <ul class="nav-links">
+            <li>Dashboard <span class="plus-icon"></span></li>
+            <li>Hot offer <span class="plus-icon"></span></li>
+            <li>Lotteries <span class="plus-icon"></span></li>
+                <li>Deposit <span class="plus-icon"></span></li>
+                <li>Withdraw <span class="plus-icon"></span></li>
+                <li>Payment Proof <span class="plus-icon"></span></li>
+             </ul>
+             <button class="logout-btn"><a style="color: white; text-decoration: none;" href="register.html">Sign Up</button></a>
+            </div>
+        </div>
+
+
+    <div id="up" class="hero">
+        <div class="hero-image">
+            <img src="WhatsApp_Image_2025-01-16_at_03.06.54_cf4d6751-removebg-preview.png" alt="Slot Machine">
+        </div>
+        <div class="hero-content">
+            <h1>We are  100% Trusted</h1>
+            
+            <p>When you partixipate , WE can give with confidence knowing that 100% of the Trust and Real Payment proceeds and you love it. 99% winning chances</p>
+           <h2>Join Now and get 100$ on your first Deposite </h2> 
+           <div class="cta-buttons">
+           <a style="text-decoration: none; color: white;" href="register.html"></a> <button >Join Now</button></a>
+                <button>Learn More</button>
+            </div>
+        </div>
+        
+    </div>
+
+<script>
+    // Wait until the page is fully loaded
+window.onload = function() {
+    // Set a delay of 0.5 to 1 second (randomly chosen within this range)
+    var delayTime = Math.random() * (1000 - 500) + 500; // Random delay between 500ms and 1000ms
+    
+    // Set a timeout to hide the preloader after the delay
+    setTimeout(function() {
+        // Hide preloader
+        document.getElementById('preloader').style.display = 'none';
+    }, delayTime);
+};
+
+// Handle the redirection button click
+document.getElementById('redirect-btn').addEventListener('click', function() {
+    // Show preloader when clicking the button
+    document.getElementById('preloader').style.display = 'flex';
+
+    // Set a timeout to redirect after a delay (same as preloader)
+    setTimeout(function() {
+        window.location.href = 'register.html'; // Redirect to another page
+    }, Math.random() * (1000 - 500) + 500); // Random delay (0.5 to 1 second)
+});
+
+</script>
+
+
+
+
+    <div id="down" class="hero">
+        <div class="hero-content">
+            <h1>We are  100% Trusted</h1>
+            <p>When you partixipate , WE can give with confidence knowing that 100% of the Trust and Real Payment proceeds and you love it. 99% winning chances</p>
+            <h2>Join Now and get 100$ on your first Deposite </h2> 
+            <div class="cta-buttons">
+                <button ><a style="text-decoration: none; color: white;" href="register.html">Join Now</a></button>
+                <button>Learn More</button>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="WhatsApp_Image_2025-01-16_at_03.06.54_cf4d6751-removebg-preview.png" alt="Slot Machine">
+        </div>
+    </div>
+
+    <footer><h1 style="text-align: center; margin-top: 20px;">Every Month Result</h1>
+  
+    </footer>
+
+    
+  <div class="stats">
+      <div class="stat-box">
+          <img src="user.png" alt="Total Users">
+          <div class="stat-content">
+              <h3>58,000</h3>
+              <p>Total Users</p>
+          </div>
+      </div>
+      <div class="stat-box">
+          <img src="trofee.png" alt="Total Winners">
+          <div class="stat-content">
+              <h3>40,000</h3>
+              <p>Total Winners</p>
+          </div>
+      </div>
+      <div class="stat-box">
+          <img src="eye.png" alt="Total Visitors">
+          <div class="stat-content">
+              <h3>60,000</h3>
+              <p>Total Visitors</p>
+          </div>
+      </div>
+  </div>
+
+  <h1 style="text-align: center; margin-top: 20px;">people response</h1>
+  
+<div class="testimonial-section">
+    <div class="testimonial">
+        <p>"After applying I was accepted within a week and made over $2k in my first week on the platform. The onboarding assessments gave me a clear understanding of what to expect, so I felt set up for success."</p>
+        <span>- Lou</span>
+    </div>
+    <div class="testimonial">
+        <p>"As a mom of six kids, it's a great way to make money on my own schedule. Payment is instant via PayPal and the platform is really easy to use. Data Annotation has opened up a lot of opportunities for me."</p>
+        <span>- Vicky</span>
+    </div> <div class="testimonial">
+        <p>"As a mom of six kids, it's a great way to make money on my own schedule. Payment is instant via PayPal and the platform is really easy to use. Data Annotation has opened up a lot of opportunities for me."</p>
+        <span>- Vicky</span>
+    </div> <div class="testimonial">
+        <p>"As a mom of six kids, it's a great way to make money on my own schedule. Payment is instant via PayPal and the platform is really easy to use. Data Annotation has opened up a lot of opportunities for me."</p>
+        <span>- Vicky</span>
+    </div> <div class="testimonial">
+        <p>"As a mom of six kids, it's a great way to make money on my own schedule. Payment is instant via PayPal and the platform is really easy to use. Data Annotation has opened up a lot of opportunities for me."</p>
+        <span>- Vicky</span>
+    </div> <div class="testimonial">
+        <p>"As a mom of six kids, it's a great way to make money on my own schedule. Payment is instant via PayPal and the platform is really easy to use. Data Annotation has opened up a lot of opportunities for me."</p>
+        <span>- Vicky</span>
+    </div>
+  </div>
+
+  <footer class="footer">
+
+
+    <div class="footer-container">
+      <!-- Logo Section -->
+
+
+      <!-- Navigation Links -->
+      <div class="footer-links">
+        <a href="#">Home</a>
+        <a href="#">Lotteries</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+
+      <!-- Social Media Icons -->
+      <div class="footer-social">
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+
+    <!-- Copyright Section -->
+    <div class="footer-bottom">
+      <p>Copyright © 2025, All Right Reserved By <a href="#">LottoLab</a>.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

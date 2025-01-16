@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale: 1.0">
+    <title>Mega 7 Lottery</title>
+    <link rel="stylesheet" href="loader.css">
+    <link rel="stylesheet" href="hot.css">
+  
+
+</head>
+<body>
+
+
+ 
+<div id="preloader">
+  <img src="preloader.gif" alt="Loading...">
+</div>
+<script>
+   // Set a delay of 0.5 to 1 second (randomly chosen within this range)
+window.onload = function() {
+  var delayTime = Math.random() * (1000 - 500) + 500; // Random delay between 500ms and 1000ms
+  
+  // Set a timeout to hide the preloader after the delay
+  setTimeout(function() {
+      // Hide preloader
+      document.getElementById('preloader').style.display = 'none';
+
+      // Show main content
+      document.getElementById('main-content').style.display = 'block';
+  }, delayTime);
+};
+
+</script>
+
+  <div class="nav">
+      <div class="navbar1">
+         
+          <div class="logo"> <img src="logo.png" alt="Logo" class="logo"></div>
+          <div class="menu-toggle" id="toggleMenu">&#9776;</div>
+      </div>
+      <div class="sidebar" id="sidebar">
+          <span class="close-btn" id="closeBtn">&times;</span> <!-- Close button in the sidebar -->
+          <ul class="menu">
+            <li><a style="text-decoration: none; color: white;" href="dashboard.html">Dashboard</li></a>
+            <li><a style="text-decoration: none; color: white;" href="Hot offer.html">Hot Offer <span class="plus-icon">+</span></li></a>
+            <li><a style="text-decoration: none; color: white;" href="lottery.html">Lotteries <span class="plus-icon">+</span></li></a>
+            <li><a style="text-decoration: none; color: white;" href="Deposite.html">Deposit <span class="plus-icon">+</span></li></a>
+            <li><a style="text-decoration: none; color: white;" href="withdrawal.css">Withdraw <span class="plus-icon">+</span></a></li></a>
+            <li><a style="text-decoration: none; color: white;" href="payment.html">Payment Proof <span class="plus-icon">+</span></li></a>
+           </ul>
+          <div class="footer">
+              <a style="text-decoration: none; color: white;" href="login.html"><button class="logout-btn">Logout</button></a>
+          </div>
+      </div>
+      <script>
+          const toggleMenu = document.getElementById('toggleMenu');
+          const sidebar = document.getElementById('sidebar');
+          const closeBtn = document.getElementById('closeBtn');
+  
+          // Open the sidebar when the menu toggle is clicked
+          toggleMenu.addEventListener('click', () => {
+              sidebar.classList.add('active');
+          });
+  
+          // Close the sidebar when the close button is clicked
+          closeBtn.addEventListener('click', () => {
+              sidebar.classList.remove('active');
+          });
+      </script>
+  </div>
+  
+  <div class="nav2">
+  <div class="navbar">
+      <!-- Logo section -->
+      <div class="logo-container">
+          <img src="logo.png" alt="Logo" class="logo"> <!-- Replace with your logo URL -->
+          <span class="logo-text"></span>
+      </div>
+      <!-- Navbar links -->
+      <ul class="nav-links">
+        <li><a style="text-decoration: none; color: white;" href="dashboard.html">Dashboard</li></a>
+        <li><a style="text-decoration: none; color: white;" href="Hot offer.html">Hot Offer <span class="plus-icon">+</span></li></a>
+        <li><a style="text-decoration: none; color: white;" href="lottery.html">Lotteries <span class="plus-icon">+</span></li></a>
+        <li><a style="text-decoration: none; color: white;" href="Deposite.html">Deposit <span class="plus-icon">+</span></li></a>
+        <li><a style="text-decoration: none; color: white;" href="withdrawal.css">Withdraw <span class="plus-icon">+</span></a></li></a>
+        <li><a style="text-decoration: none; color: white;" href="payment.html">Payment Proof <span class="plus-icon">+</span></li></a>
+       </ul>
+      <!-- Logout button -->
+      <a style="text-decoration: none; color: white;" href="login.html"><button class="logout-btn">Logout</button></a>
+          </div>
+  </div>
+  <script>
+    let scrollPosition = 0;
+
+    function scrollSlider(direction) {
+        const slider = document.querySelector('.ticket-slider');
+        const tickets = document.querySelectorAll('.ticket');
+        const totalWidth = slider.scrollWidth;
+        const visibleWidth = slider.clientWidth;
+        const maxScroll = totalWidth - visibleWidth;
+
+        if (direction === 'right') {
+            scrollPosition = Math.min(scrollPosition + 200, maxScroll);
+        } else if (direction === 'left') {
+            scrollPosition = Math.max(scrollPosition - 200, 0);
+        }
+
+        slider.style.transform = `translateX(-${scrollPosition}px)`;
+    }
+</script>
+
+
+<div class="main">
+    <h2>BUY NOW</h2>
+    <div class="tickets">
+        <div class="ticket">
+            <h3>TICKET 1</h3>
+            <div class="selected-numbers">
+                <div class="empty">?</div>
+                <div class="empty">?</div>
+                <div class="empty">?</div>
+                <div class="empty">?</div>
+                <div class="empty">?</div>
+                <div class="empty">?</div>
+                <div class="empty">?</div>
+            </div>
+            <div class="numbers">
+                <!-- Generate numbers dynamically for Ticket 1 -->
+                <script>
+                    for (let i = 1; i <= 37; i++) {
+                        document.write(`<button onclick="addNumber(1, ${i})">${i}</button>`);
+                    }
+                </script>
+            </div>
+            <button class="clear-button" onclick="clearNumbers(1)">CLEAR ALL</button>
+        </div>
+
+        <div class="ticket">
+            <h3>TICKET 2</h3>
+            <div class="ticket-content">
+                <div class="selected-numbers">
+                    <div class="empty">?</div>
+                    <div class="empty">?</div>
+                    <div class="empty">?</div>
+                    <div class="empty">?</div>
+                    <div class="empty">?</div>
+                    <div class="empty">?</div>
+                    <div class="empty">?</div>
+                </div>
+                <div class="numbers">
+                    <!-- Numbers for Ticket 2 are now non-interactive -->
+                    <script>
+                        for (let i = 1; i <= 37; i++) {
+                            document.write(`<button disabled>${i}</button>`);
+                        }
+                    </script>
+                </div>
+            </div>
+            <button class="clear-button" disabled>CLEAR ALL</button>
+            <div class="buy-more-text">BUY MORE</div>
+        </div>
+
+        <div class="ticket">
+            <h3>TICKET 3</h3>
+            <div class="ticket-content">
+                <div class="selected-numbers">
+                    <div class="empty">?</div>
+                    <div class="empty">?</div>
+                    <div class="empty">?</div>
+                    <div class="empty">?</div>
+                    <div class="empty">?</div>
+                    <div class="empty">?</div>
+                    <div class="empty">?</div>
+                </div>
+                <div class="numbers">
+                    <!-- Numbers for Ticket 3 are now non-interactive -->
+                    <script>
+                        for (let i = 1; i <= 37; i++) {
+                            document.write(`<button disabled>${i}</button>`);
+                        }
+                    </script>
+                </div>
+            </div>
+            <button class="clear-button" disabled>CLEAR ALL</button>
+            <div class="buy-more-text">BUY MORE</div>
+        </div>
+    </div>
+
+    <div class="buy-more">ADD MORE TICKETS</div>
+
+    <div class="actions">
+      <button class="cart-button" onclick="redirectToCart()">ADD TO CART</button>
+
+      <script>
+          function redirectToCart() {
+              // Save selected numbers in localStorage for persistence
+              localStorage.setItem('selectedNumbers', JSON.stringify(selectedNumbers[1])); // Save Ticket 1 numbers
+              window.location.href = 'cart.html'; // Redirect to Cart Summary page
+          }
+      </script>
+      </div>
+
+    <div class="play-options">
+        <label>
+            <input type="checkbox" checked> CURRENT DRAW
+        </label>
+        <label>
+            Play for the draw on 19 Jan 2025, 9 PM Dubai time
+        </label>
+        <label>
+            <input type="checkbox"> MULTIPLE UPCOMING DRAWS
+        </label>
+    </div>
+</div>
+
+<script>
+    const selectedNumbers = {
+        1: [],
+        2: [],
+        3: []
+    };
+
+    function addNumber(ticket, number) {
+        if (selectedNumbers[ticket].length < 7 && !selectedNumbers[ticket].includes(number)) {
+            selectedNumbers[ticket].push(number);
+            updateSelectedNumbers(ticket);
+            updateButtonState(ticket, number, true); // Mark the button as selected
+        }
+    }
+
+    function updateButtonState(ticket, number, isSelected) {
+        const buttons = document.querySelectorAll(`.ticket:nth-child(${ticket}) .numbers button`);
+        buttons.forEach(button => {
+            if (button.textContent == number) {
+                if (isSelected) {
+                    button.classList.add('selected');
+                } else {
+                    button.classList.remove('selected');
+                }
+            }
+        });
+    }
+
+    function clearNumbers(ticket) {
+        selectedNumbers[ticket].length = 0;
+        updateSelectedNumbers(ticket);
+        updateButtonState(ticket, null, false); // Deselect all buttons
+
+        // Reset button styles to default
+        const buttons = document.querySelectorAll(`.ticket:nth-child(${ticket}) .numbers button`);
+        buttons.forEach(button => {
+            button.classList.remove('selected');
+        });
+    }
+
+    function updateSelectedNumbers(ticket) {
+        const slots = document.querySelectorAll(`.ticket:nth-child(${ticket}) .selected-numbers div`);
+        slots.forEach((slot, index) => {
+            if (index < selectedNumbers[ticket].length) {
+                slot.textContent = selectedNumbers[ticket][index];
+                slot.classList.remove('empty');
+            } else {
+                slot.textContent = '?';
+                slot.classList.add('empty');
+            }
+        });
+    }
+</script>
+
+</body>
+</html>

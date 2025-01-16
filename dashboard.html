@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+     <link rel="stylesheet" href="footer.css">
+    <link rel="stylesheet" href="dashboard.css">
+     <link rel="stylesheet" href="loader.css">
+</head>
+<body>
+ 
+
+<div id="preloader">
+    <img src="preloader.gif" alt="Loading...">
+</div>
+<script>
+     // Set a delay of 0.5 to 1 second (randomly chosen within this range)
+window.onload = function() {
+    var delayTime = Math.random() * (1000 - 500) + 500; // Random delay between 500ms and 1000ms
+    
+    // Set a timeout to hide the preloader after the delay
+    setTimeout(function() {
+        // Hide preloader
+        document.getElementById('preloader').style.display = 'none';
+
+        // Show main content
+        document.getElementById('main-content').style.display = 'block';
+    }, delayTime);
+};
+
+</script>
+
+<div class="nav">
+    <div class="navbar1">
+       
+        <div class="logo"> <img src="logo.png" alt="Logo" class="logo"></div>
+        <div class="menu-toggle" id="toggleMenu">&#9776;</div>
+    </div>
+    <div class="sidebar" id="sidebar">
+        <span class="close-btn" id="closeBtn">&times;</span> <!-- Close button in the sidebar -->
+        <ul class="menu">
+            <li><a style="text-decoration: none; color: white;" href="dashboard.html">Dashboard</li></a>
+            <li><a style="text-decoration: none; color: white;" href="Hot offer.html">Hot Offer <span class="plus-icon">+</span></li></a>
+            <li><a style="text-decoration: none; color: white;" href="lottery.html">Lotteries <span class="plus-icon">+</span></li></a>
+            <li><a style="text-decoration: none; color: white;" href="Deposite.html">Deposit <span class="plus-icon">+</span></li></a>
+            <li><a style="text-decoration: none; color: white;" href="withdrawal.html">Withdraw <span class="plus-icon">+</span></a></li></a>
+            <li><a style="text-decoration: none; color: white;" href="payment.html">Payment Proof <span class="plus-icon">+</span></li></a>
+            </ul>
+        <div class="footer">
+            <a style="text-decoration: none; color: white;" href="login.html"><button class="logout-btn">Logout</button></a>
+        </div>
+    </div>
+    <script>
+        const toggleMenu = document.getElementById('toggleMenu');
+        const sidebar = document.getElementById('sidebar');
+        const closeBtn = document.getElementById('closeBtn');
+
+        // Open the sidebar when the menu toggle is clicked
+        toggleMenu.addEventListener('click', () => {
+            sidebar.classList.add('active');
+        });
+
+        // Close the sidebar when the close button is clicked
+        closeBtn.addEventListener('click', () => {
+            sidebar.classList.remove('active');
+        });
+    </script>
+</div>
+
+<div class="nav2">
+<div class="navbar">
+    <!-- Logo section -->
+    <div class="logo-container">
+        <img src="logo.png" alt="Logo" class="logo"> <!-- Replace with your logo URL -->
+        <span class="logo-text"></span>
+    </div>
+    <!-- Navbar links -->
+    <ul class="nav-links">
+        <li><a style="text-decoration: none; color: white;" href="dashboard.html">Dashboard <span class="plus-icon">+</span></li></a>
+            <li><a style="text-decoration: none; color: white;" href="lottery.html">Lotteries <span class="plus-icon">+</span></li></a>
+            <li><a style="text-decoration: none; color: white;" href="Deposite.html">Deposit <span class="plus-icon">+</span></li></a>
+            <li><a style="text-decoration: none; color: white;" href="withdrawal.html">Withdraw <span class="plus-icon">+</span></a></li></a>
+            <li><a style="text-decoration: none; color: white;" href="payment.html">Payment Proof <span class="plus-icon">+</span></li></a>
+            </ul>
+    <!-- Logout button -->
+    <a style="text-decoration: none; color: white;" href="login.html"><button class="logout-btn">Logout</button></a>
+        </div>
+</div>
+
+
+
+    <div class="dashboard">
+        <h1>Dashboard</h1>
+
+        <div class="stats">
+            <div class="stat-box" id="stat-box-1">
+                <h2>Total Balance</h2>
+                <p>$0</p>
+            </div>
+            
+            <div class="stat-box">
+                <h2>Total Win</h2>
+                <p>0</p>
+                <button>View log</button>
+                <img src="trofee.png" alt="Withdraw Icon">
+            </div>
+            <div class="stat-box">
+                <h2>Total Deposit</h2>
+                <p>$0</p>
+                <button>View log</button>
+                <img id="im" src="WhatsApp_Image_2025-01-14_at_10.35.12_e076283e-removebg-preview.png" alt="Withdraw Icon">
+            </div>
+            <div class="stat-box">
+                <h2>Total Withdraw</h2>
+                <p>$0</p>
+                <button>View log</button>
+                <img id="imm" src="6360753.png" alt="Withdraw Icon">
+            </div>
+        </div>
+<br><br>
+        <div class="containers">
+            <h1>Total Wins</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>S. N.</th>
+                        <th>Lottery Name</th>
+                        <th>Phase Number</th>
+                        <th>Ticket Number</th>
+                        <th>Win Bonus</th>
+                        <th>Winning Level</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="6" class="no-data">Data not found</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <footer class="footer">
+
+
+        <div class="footer-container">
+          <!-- Logo Section -->
+
+    
+          <!-- Navigation Links -->
+          <div class="footer-links">
+            <a href="#">Home</a>
+            <a href="#">Lotteries</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+          </div>
+    
+          <!-- Social Media Icons -->
+          <div class="footer-social">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+    
+        <!-- Copyright Section -->
+        <div class="footer-bottom">
+          <p>Copyright © 2025, All Right Reserved By <a href="#">LottoLab</a>.</p>
+        </div>
+      </footer>
+    
+</body>
+</html>

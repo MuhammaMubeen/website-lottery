@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disposable Deposit</title>
+    <link rel="stylesheet" href="coin.css">
+    <link rel="stylesheet" href="loader.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #0d0c2b;
+            color: #fff;
+        }
+
+        .container {
+            margin-top: 5%;
+            padding: 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .box {
+            background-color: #1a1a40;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            text-align: center;
+            color: #00d4ff;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .left {
+            width: 40%;
+        }
+
+        .payment-options {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .payment-option {
+            display: flex;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #2e2e5e;
+            position: relative;
+        }
+
+        .payment-option:last-child {
+            border-bottom: none;
+        }
+
+        .payment-option input {
+            margin-right: 10px;
+            accent-color: #00d4ff;
+        }
+
+        .payment-option label {
+            font-size: 16px;
+        }
+
+        .payment-option .line {
+            position: absolute;
+            left: -8px; /* Adjust as per your layout */
+            top: 52%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 30px;
+            background-color: #00d4ff;
+            transition: width 0.1s ease;
+        }
+
+        .payment-option.crypto .line {
+            width: 1%;
+        }
+
+        .right {
+            width: 55%;
+            display: flex;
+            flex-direction: column;
+            background-color: #23234a;
+            padding: 20px;
+            
+            border-radius: 8px;
+        }
+
+        .details label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+
+        .details input {
+            width: 80%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #3b3b6b;
+            border-radius: 5px;
+            background-color: #1c1c3c;
+            color: #fff;
+            font-size: 16px;
+        }
+
+        .details input::placeholder {
+            color: #7a7aa3;
+        }
+
+        .details p {
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: #8a8aa5;
+        }
+
+        .divider {
+            border-left: 2px solid #3a3a78;
+            height: auto;
+            margin: 0 20px;
+        }
+
+        button {
+            padding: 12px;
+            background: #00d4ff;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background: #00b5e6;
+        }
+
+        .footer-text {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #8a8aa5;
+        }
+
+         /* Popup Notification */
+         .popup-notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #ff3b3b;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            display: none;
+            font-size: 14px;
+            z-index: 1000;
+        }
+
+        @media (max-width: 600px) {
+            .content {
+                flex-direction: column;
+            }
+
+            .left {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+            
+            .right {
+                margin-left: -10px;
+                width: 90%;
+                margin-bottom: 20px;
+            }
+
+            .divider {
+                display: none;
+            }
+        }
+
+    </style>
+
+<script>
+    // Function to show the popup notification
+    function showPopup() {
+        const popup = document.getElementById('popup-notification');
+        popup.style.display = 'block';  // Show the popup
+
+        // Hide the popup after 5 seconds
+        setTimeout(() => {
+            popup.style.display = 'none';  // Hide the popup
+        }, 5000);  // 5000ms = 5 seconds
+    }
+
+    // Add event listener for the "Other Options" radio button
+    window.addEventListener('DOMContentLoaded', () => {
+        document.getElementById('option6').addEventListener('click', showPopup);
+    });
+
+    // Function to handle the redirection based on selected payment method
+    function handlePaymentRedirect() {
+        const selectedPayment = document.querySelector('input[name="payment"]:checked');
+        
+        if (!selectedPayment) {
+            alert("Please select a payment option.");
+            return; // Exit if no payment option is selected
+        }
+
+        const selectedId = selectedPayment.id;
+
+        console.log('Selected Payment:', selectedId); // Debugging the selected option
+
+        switch (selectedId) {
+            case 'option1': // Bitcoin
+                console.log('Redirecting to BTC...');
+                window.location.href = 'btc.html'; // Redirect to BTC page
+                break;
+            case 'option2': // Ethereum
+                console.log('Redirecting to ETH...');
+                window.location.href = 'eth.html'; // Redirect to ETH page
+                break;
+            case 'option3': // Binance Coin
+                console.log('Redirecting to BNB...');
+                window.location.href = 'binance.html'; // Redirect to BNB page
+                break;
+            case 'option4': // Dogecoin
+                console.log('Redirecting to Doge...');
+                window.location.href = 'doge.html'; // Redirect to Doge page
+                break;
+            case 'option5': // Tether
+                console.log('Redirecting to USDT...');
+                window.location.href = 'Usdt.html'; // Redirect to USDT page
+                break;
+            default:
+                alert("Error: Invalid payment option.");
+        }
+    }
+
+    // Add event listener to the "Confirm Deposit" button for redirection
+    window.addEventListener('DOMContentLoaded', () => {
+        document.getElementById('confirm-deposit').addEventListener('click', handlePaymentRedirect);
+    });
+</script>
+    <script>
+        function updateCharges() {
+            const amountInput = document.getElementById('amount');
+            const processingCharge = document.getElementById('processing-charge');
+            const totalAmount = document.getElementById('total-amount');
+            const errorMessage = document.getElementById('error-message');
+
+            let amount = parseFloat(amountInput.value) || 0;
+
+            if (amount < 30) {
+                errorMessage.textContent = "Minimum deposit is $30.";
+                processingCharge.textContent = "$0.00";
+                totalAmount.textContent = "$0.00";
+                return;
+            } else if (amount > 1000) {
+                errorMessage.textContent = "Maximum deposit is $1000.";
+                processingCharge.textContent = "$0.00";
+                totalAmount.textContent = "$0.00";
+                return;
+            }
+
+            errorMessage.textContent = "";
+            let charges = (amount * 0.02).toFixed(2); // 2% charges
+            let total = (amount - charges).toFixed(2);
+
+            processingCharge.textContent = `$${charges}`;
+            totalAmount.textContent = `$${total}`;
+        }
+
+        function handlePaymentOptionChange(event) {
+            const paymentOptions = document.querySelectorAll('.payment-option');
+            paymentOptions.forEach(option => {
+                option.classList.remove('crypto');
+            });
+
+            const selectedOption = event.target.closest('.payment-option');
+            if (selectedOption) {
+                const labelText = selectedOption.querySelector('label').textContent.toLowerCase();
+                if (labelText.includes('btc') || labelText.includes('binance') || labelText.includes('blockchain') || labelText.includes('btcpay')) {
+                    selectedOption.classList.add('crypto');
+                }
+               
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const paymentOptions = document.querySelectorAll('.payment-option input');
+            paymentOptions.forEach(option => {
+                option.addEventListener('change', handlePaymentOptionChange);
+            });
+        });
+    </script>
+</head>
+<body>
+    
+
+<div id="preloader">
+    <img src="preloader.gif" alt="Loading...">
+</div>
+<script>
+     // Set a delay of 0.5 to 1 second (randomly chosen within this range)
+window.onload = function() {
+    var delayTime = Math.random() * (1000 - 500) + 500; // Random delay between 500ms and 1000ms
+    
+    // Set a timeout to hide the preloader after the delay
+    setTimeout(function() {
+        // Hide preloader
+        document.getElementById('preloader').style.display = 'none';
+
+        // Show main content
+        document.getElementById('main-content').style.display = 'block';
+    }, delayTime);
+};
+
+</script>
+
+    <div class="nav">
+        <div class="navbar1">
+           
+            <div class="logo"> <img src="logo.png" alt="Logo" class="logo"></div>
+            <div class="menu-toggle" id="toggleMenu">&#9776;</div>
+        </div>
+        <div class="sidebar" id="sidebar">
+            <span class="close-btn" id="closeBtn">&times;</span> <!-- Close button in the sidebar -->
+            <ul class="menu">
+                <li><a style="text-decoration: none; color: white;" href="dashboard.html">Dashboard</li></a>
+                <li><a style="text-decoration: none; color: white;" href="lottery.html">Lotteries <span class="plus-icon">+</span></li></a>
+                <li><a style="text-decoration: none; color: white;" href="Deposite.html">Deposit <span class="plus-icon">+</span></li></a>
+                <li><a style="text-decoration: none; color: white;" href="withdrawal.html">Withdraw <span class="plus-icon">+</span></a></li></a>
+                <li><a style="text-decoration: none; color: white;" href="payment.html">Payment Proof <span class="plus-icon">+</span></li></a>
+                </ul>
+            <div class="footer">
+                <a style="text-decoration: none; color: white;" href="login.html"><button class="logout-btn">Logout</button></a>
+            </div>
+        </div>
+        <script>
+            const toggleMenu = document.getElementById('toggleMenu');
+            const sidebar = document.getElementById('sidebar');
+            const closeBtn = document.getElementById('closeBtn');
+    
+            // Open the sidebar when the menu toggle is clicked
+            toggleMenu.addEventListener('click', () => {
+                sidebar.classList.add('active');
+            });
+    
+            // Close the sidebar when the close button is clicked
+            closeBtn.addEventListener('click', () => {
+                sidebar.classList.remove('active');
+            });
+        </script>
+    </div>
+    
+    <div class="nav2">
+    <div class="navbar">
+        <!-- Logo section -->
+        <div class="logo-container">
+            <img src="logo.png" alt="Logo" class="logo"> <!-- Replace with your logo URL -->
+            <span class="logo-text"></span>
+        </div>
+        <!-- Navbar links -->
+        <ul class="nav-links">
+            <li><a style="text-decoration: none; color: white;" href="dashboard.html">Dashboard</li></a>
+                <li><a style="text-decoration: none; color: white;" href="lottery.html">Lotteries <span class="plus-icon">+</span></li></a>
+                <li><a style="text-decoration: none; color: white;" href="Deposite.html">Deposit <span class="plus-icon">+</span></li></a>
+                <li><a style="text-decoration: none; color: white;" href="withdrawal.html">Withdraw <span class="plus-icon">+</span></a></li></a>
+                <li><a style="text-decoration: none; color: white;" href="payment.html">Payment Proof <span class="plus-icon">+</span></li></a>
+                </ul>
+        <!-- Logout button -->
+        <a style="text-decoration: none; color: white;" href="login.html"><button class="logout-btn">Logout</button></a>
+            </div>
+    </div>
+    <div class="container"> 
+        <h1 style="color: white;">Deposit Methods</h1>
+
+        <div class="box">
+           
+            <div class="content">
+                <!-- Left side: Payment options -->
+                <div class="left">
+                    <div class="payment-options">
+                        <div class="payment-option">
+                            <input type="radio" name="payment" id="option1">
+                            <label for="option1">Bitcoin - (Btc)<span style="color: transparent; display: none;">(Btc)</span> </label>
+                            <div class="line"></div>
+                        </div>
+                        <div class="payment-option">
+                            <input type="radio" name="payment" id="option2">
+                            <label for="option2">Ethereum - (ETH)<span style="color: transparent; display: none;">(Btc)</span> </label>
+                            <div class="line"></div>
+                        </div>
+                        <div class="payment-option">
+                            <input type="radio" name="payment" id="option3">
+                            <label for="option3">Binance coin - (BNB)<span style="color: transparent; display: none;">(Btc)</span> </label>
+                            <div class="line"></div>
+                        </div>
+                        <div class="payment-option">
+                            <input type="radio" name="payment" id="option4">
+                            <label for="option4">Doge coin - (Ð)<span style="color: transparent; display: none;">(Btc)</span> </label>
+                            <div class="line"></div>
+                        </div>
+                        <div class="payment-option">
+                            <input type="radio" name="payment" id="option5">
+                            <label for="option5">Tether - (USDT) <span style="color: transparent; display: none;">(Btc)</span> </label>
+                            <div class="line"></div>
+                        </div>
+                        <div class="payment-option">
+                            <input type="radio" name="payment" id="option6">
+                            <label for="option6">Other Options<span style="color: transparent; display: none;">(Btc)</span> </label>
+                            <div class="line"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Divider -->
+                <div class="divider"></div>
+
+                <!-- Right side: Details -->
+                <div class="right">
+                    <div class="details">
+                        <label for="amount">Amount</label>
+                        <input type="number" id="amount" placeholder="$0.00" oninput="updateCharges()">
+
+                        <p id="error-message" style="color: red; font-size: 14px;"></p>
+
+                        <p>Limit: $30.00 - $1000.00</p>
+                        <p>Processing Charges: <span id="processing-charge">$0.00</span></p>
+                        <p>Total: <span id="total-amount">$0.00</span></p>
+                        <p>Conversion with BTC and final value will show on the next step.</p>
+                        <button id="confirm-deposit">Confirm Deposit</button>
+
+                    </div>
+                </div>
+            </div>
+<!-- Popup Notification -->
+<div id="popup-notification" class="popup-notification">
+    This option is not available in your country.
+</div>
+
+            <!-- Footer Text -->
+            <p class="footer-text">Ensuring secure transactions with trusted payment methods.</p>
+        </div>
+    </div>
+</body>
+</html>
